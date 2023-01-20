@@ -1,0 +1,87 @@
+.Button{
+    color: white;
+    width: 90px;
+    background-color: #333;
+    height: 90px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    cursor: pointer;
+    transition: filter 0.7s ease-in-out;
+}
+
+.Button:active,
+.Button:focus{
+    filter: brightness(170%);
+}
+
+
+.Button.zero{
+    width: 170px;
+    grid-column: 1/span 2;
+    border-radius: 57.6px;
+    position: relative;
+    justify-content: flex-start;
+   padding-left: 30px;
+}
+
+.Button.function {
+    color: black;
+    background-color: #a5a5a5;
+}
+
+.Button.operator{
+    background-color: #f1a33c;
+}
+
+
+@media only screen and (max-width: 375px) {
+
+.Button{
+    
+    width: 70px;
+    height: 70px;
+    font-size: 30px;
+   
+}
+
+
+.Button.zero{
+    width: 130px;
+    grid-column: 1/span 2;
+    border-radius: 57.6px;
+    padding-left: 20px;
+}
+}
+
+
+@media only screen and (max-width: 320px) {
+    
+    
+    .Button.zero{
+        width: 130px;
+        grid-column: 1/span 2;
+        border-radius: 57.6px;
+        padding-left: 15px;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .Button{
+    
+        width: 80px;
+        height: 80px;
+        font-size: 30px;
+       
+    }
+    
+    
+    .Button.zero{
+        width: 135px;
+        grid-column: 1/span 2;
+        border-radius: 57.6px;
+        padding-left: 30px;
+    }
+}
