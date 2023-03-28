@@ -2,15 +2,18 @@ import "./Calculator.css"
 import React,{useState} from 'react'
 import Button from "../Button/Button"
 import main from "../Main/Main"
-
+let decimal=require("decimal.js")
 const Calculator = () => {
-
+// let x=new Decimal()
 const [value,setValue]=useState("0")
 const [left,setLeft]=useState(null)
 const [operator,setOperator]=useState(null)
 
  const handleClick = content=>()=>{
+
   
+
+
   const num=parseFloat(value)
 
   if(content==="AC"){
@@ -39,10 +42,19 @@ const [operator,setOperator]=useState(null)
     return;
   }
 
+  // let x=0.1//first value
+// let y=0.2//second value
+
+// let a = decimal.add(x, y)
+// let value = new decimal(x).plus(y)
+// console.log(value) 
+
   if(content=== "+"){
      if(operator!==null){
       if(operator==="+"){
+        
         setLeft(left + parseFloat(value));
+        
       }else if(operator==="-"){
         setLeft(left - parseFloat(value))
       }else if(operator === "X"){
@@ -57,7 +69,8 @@ const [operator,setOperator]=useState(null)
   setOperator("+")
   return;
   }
-
+  console.log(left,value)
+  console.log(left)
   if(content==="-"){
     if(operator!==null){
       if(operator==="+"){
@@ -118,13 +131,17 @@ const [operator,setOperator]=useState(null)
      if(!operator) return;
 
      if(operator==="+"){
-      setValue((left + parseFloat(value)).toString());
+      decimal.add(left,value)
+      setValue(new decimal(left).plus(parseFloat(value)).toString());
      }else if(operator=== "-"){
-      setValue((left - parseFloat(value)).toString())
+      decimal.sub(left,value)
+      setValue(new decimal(left).sub(parseFloat(value)).toString())
      }else if(operator=== "X"){
-      setValue((left * parseFloat(value)).toString())
+      decimal.mul(left,value)
+      setValue(new decimal(left).mul(parseFloat(value)).toString())
      }else if(operator=== "÷"){
-        setValue((left / parseFloat(value)).toString())
+      decimal.div(left,value)
+        setValue(new decimal(left).div(parseFloat(value)).toString())
      }
      setLeft(null)
      setOperator(null)
@@ -136,7 +153,7 @@ const [operator,setOperator]=useState(null)
     setValue(parseFloat(num + content).toString())
    }
 
-   
+   console.log(value)
   
 
  }
@@ -158,7 +175,7 @@ const [operator,setOperator]=useState(null)
                    <Button  onButtonClick={handleClick} content="÷" type="operator"/>
                    <Button onButtonClick={handleClick}  content="7"/>
                    <Button onButtonClick={handleClick}  content="8"/>
-                   <Button onButtonClick={handleClick}    content="9"/>
+                   <Button onButtonClick={handleClick}  content="9"/>
                    <Button onButtonClick={handleClick} content="X" type="operator"/>
                    <Button onButtonClick={handleClick} content="4"/>
                    <Button onButtonClick={handleClick} content="5"/>
